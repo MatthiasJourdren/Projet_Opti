@@ -50,13 +50,8 @@ def solve_check_and_save(data):
     endpoints = data['endpoints']
     requests = data['requests']
     
-    # S'assurer que le répertoire de sortie existe
-    output_dir = "output"
-    if not os.path.exists(output_dir):
-        print(f"Creating output directory: {output_dir}")
-        os.makedirs(output_dir)
-    else:
-        print(f"Output directory {output_dir} already exists.")
+    # Sortie à la racine
+    print("Output will be saved to the current directory.")
     
     # Création du modèle
     m = gp.Model("streaming_videos")
@@ -122,7 +117,7 @@ def solve_check_and_save(data):
         m.addConstr(gp.quicksum(y[r_idx, c] for c in connected_caches) <= 1, name=f"OneSource_r{r_idx}")
 
     # --- Écriture du fichier MPS dans le dossier de sortie ---
-    mps_path = os.path.join(output_dir, "videos.mps")
+    mps_path = "videos.mps"
     print(f"Writing {mps_path}...")
     m.write(mps_path)
         
@@ -142,7 +137,7 @@ def solve_check_and_save(data):
                 solution[c] = videos_in_c
                 
     # --- Écriture de videos.out dans le dossier de sortie ---
-    output_filename = os.path.join(output_dir, "videos.out")
+    output_filename = "videos.out"
     print(f"Writing solution to {output_filename}...")
     with open(output_filename, 'w') as f:
         f.write(f"{len(solution)}\n")
