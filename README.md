@@ -31,13 +31,12 @@ Avant de lancer le projet, assurez-vous d'avoir :
 
 ## Structure du projet
 
-```text
 Projet_Opti/
-├── data_projet/           # Dossier contenant les jeux de données (.in)
-├── output/                # Dossier généré pour les résultats (.out, .mps)
-├── videos.py              # Script principal de résolution
-└── README.md              # Documentation du projet
-```
+├── data_projet/ # Dossier contenant les jeux de données (.in)
+├── videos.py # Script principal de résolution
+└── README.md # Documentation du projet
+
+````
 
 ## Utilisation
 
@@ -45,7 +44,7 @@ Pour lancer la résolution sur un fichier d'entrée spécifique (par exemple `tr
 
 ```bash
 python videos.py data_projet/videos/datasets/trending_4000_10k.in
-```
+````
 
 ### Fonctionnement du script
 
@@ -55,9 +54,8 @@ Le script `videos.py` effectue les étapes suivantes :
 2.  **Modélisation** : Construit un modèle d'optimisation linéaire mixte (MIP) avec Gurobi.
 3.  **Résolution** : Lance l'optimiseur (avec une tolérance d'arrêt _MIP Gap_ de 0.5%).
 4.  **Sortie** :
-    - Crée le dossier `output/` s'il n'existe pas.
-    - Sauvegarde le modèle (`videos.mps`).
-    - Écrit la solution finale (`videos.out`) respectant le format attendu.
+    - Sauvegarde le modèle (`videos.mps`) dans le répertoire courant.
+    - Écrit la solution finale (`videos.out`) dans le répertoire courant.
 
 ## Auteur
 
